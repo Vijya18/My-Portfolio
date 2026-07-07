@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vijya Pathak — Content Strategist &amp; Technical Writer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF0E7;
+    --paper-2:#E4E7DB;
+    --ink:#14171A;
+    --ink-soft:#4B5049;
+    --marker-yellow:#F2E14D;
+    --marker-coral:#FF6F59;
+    --teal:#0F6659;
+    --line:#C9C6BC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--marker-yellow); color:var(--ink); }
+
+  .wrap{ max-width:900px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--teal);
+    margin:0 0 14px;
+  }
+
+  header.hero{ padding:100px 0 70px; }
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(48px, 9vw, 96px);
+    line-height:0.98;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  .mark{
+    position:relative;
+    display:inline-block;
+    z-index:1;
+  }
+  .mark::before{
+    content:"";
+    position:absolute;
+    left:-6px; right:-6px; bottom:6%;
+    height:42%;
+    background:var(--marker-yellow);
+    transform:skew(-6deg) scaleX(0);
+    transform-origin:left center;
+    z-index:-1;
+    border-radius:2px;
+    transition:transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .mark.in-view::before{ transform:skew(-6deg) scaleX(1); }
+  .mark.coral::before{ background:var(--marker-coral); }
+
+  .tagline{
+    font-family:'Work Sans', sans-serif;
+    font-size:clamp(18px, 2.4vw, 22px);
+    font-weight:500;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 0 32px;
+  }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:12px; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink);
+    background:transparent;
+    border:1.5px solid var(--ink);
+    padding:10px 18px;
+    border-radius:999px;
+    transition:background 0.15s ease, color 0.15s ease;
+    white-space:nowrap;
+  }
+  .chip:hover{ background:var(--ink); color:var(--paper); }
+  .chip.filled{ background:var(--teal); border-color:var(--teal); color:var(--paper); }
+  .chip.filled:hover{ background:var(--ink); border-color:var(--ink); }
+
+  section{ padding:56px 0; border-top:1px solid var(--line); }
+
+  h2.section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--teal);
+    margin:0 0 28px;
+    letter-spacing:0.01em;
+  }
+
+  .profile-text{
+    font-family:'Fraunces', serif;
+    font-size:clamp(21px, 2.6vw, 28px);
+    font-weight:400;
+    line-height:1.5;
+    max-width:760px;
+    margin:0;
+  }
+
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:14px;
+  }
+  .service-card{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px;
+    background:var(--paper-2);
+  }
+  .service-card{
+    transition:all 0.3s ease;
+}
+
+.service-card:nth-child(1){
+    background:#EDF4EA;
+    border-left:5px solid #5F8D4E;
+}
+
+.service-card:nth-child(2){
+    background:#FDF3E7;
+    border-left:5px solid #D4A373;
+}
+
+.service-card:nth-child(3){
+    background:#E9EEF7;
+    border-left:5px solid #5B7DB1;
+}
+
+.service-card:nth-child(4){
+    background:#FDECE7;
+    border-left:5px solid #E76F51;
+}
+
+.service-card:nth-child(5){
+    background:#F1ECFA;
+    border-left:5px solid #7B61C8;
+}
+
+.service-card:nth-child(6){
+    background:#EAF6F3;
+    border-left:5px solid #2A9D8F;
+}
+  .service-card h3{
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .service-card p{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  .samples-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
+  }
+  .sample-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:26px 26px 24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .orinite{
+    background:#EDF4EA;
+    border-left:5px solid #5F8D4E;
+}
+
+.forex{
+    background:#FDF3E7;
+    border-left:5px solid #D4A373;
+}
+
+.capyngen{
+    background:#E9EEF7;
+    border-left:5px solid #5B7DB1;
+}
+
+.reel{
+    background:#FDECE7;
+    border-left:5px solid #E76F51;
+}
+
+.youtube{
+    background:#F1ECFA;
+    border-left:5px solid #7B61C8;
+}
+
+.strategy{
+    background:#EAF6F3;
+    border-left:5px solid #2A9D8F;
+}
+  .sample-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin:0 0 12px;
+  }
+  .sample-headline{
+    font-family:'Fraunces', serif;
+    font-size:21px;
+    font-weight:600;
+    margin:0 0 10px;
+    line-height:1.3;
+  }
+  .sample-body{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+    flex-grow:1;
+  }
+  .sample-body ul{ margin:0; padding-left:18px; }
+  .sample-body li{ margin-bottom:4px; }
+  .sample-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--teal);
+    margin:0;
+  }
+
+  .bonus-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .bonus-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:8px 16px;
+    border-radius:999px;
+  }
+
+  footer.contact{
+    padding:70px 0 100px;
+    border-top:1px solid var(--line);
+  }
+  .contact h2{
+    font-family:'Fraunces', serif;
+    font-size:clamp(32px, 6vw, 52px);
+    font-weight:600;
+    margin:0 0 24px;
+    max-width:600px;
+    line-height:1.15;
+  }
+  .contact-links{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:8px; }
+  .contact-note{ font-size:13px; color:var(--ink-soft); }
+
+  @media (max-width:600px){
+    header.hero{ padding:64px 0 48px; }
+    section{ padding:40px 0; }
+    .wrap{ padding:0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow"> Hey, I'am Vijya Pathak </p>
+    <h1 class="name">Contents that <span class="mark">gets found</span>.<br>Copy that <span class="mark coral">gets remembered</span>.</h1>
+    <p class="tagline">Content Strategist &amp; Technical Writer with blending content strategy, SEO, and technical communication. I help brands communicate clearly through content built for both users and search engines.</p>
+    <div class="cta-row">
+      <a class="chip filled" href="mailto:pathakvijya2002@gmail.com">Email me</a>
+      <a class="chip" href="tel:+918866058890">+91 88660 58890</a>
+      <a class="chip" href="https://drive.google.com/drive/folders/1AQCZ7DF7ZzsJRgCbz58N7gF9EoOBnnan" target="_blank" rel="noopener">Full samples ↗</a>
+    </div>
+  </header>
+
+  <section id="profile">
+    <h2 class="section-label">Profile</h2>
+    <p class="profile-text">One year deep into content at Capyngen — <span class="mark">solo-shipping</span> a full website's worth of copy every single month, while writing technical content that never reads like a manual. MA in English, done. MBA in Digital Marketing, in progress. Basically: I can write the story <em>and</em> explain why it'll rank.</p>
+  </section>
+
+  <section id="services">
+    <h2 class="section-label">WHAT I DO</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Website &amp; Landing page copy</h3>
+        <p>Website content built around user intent, brand voice, and conversion goals.</p>
+      </div>
+      <div class="service-card">
+        <h3>SEO blogs</h3>
+        <p>SEO content designed to improve visibility and attract qualified traffic.</p>
+      </div>
+      <div class="service-card">
+        <h3>Technical writing</h3>
+        <p>Dense product features, translated into content humans enjoy reading.</p>
+      </div>
+      <div class="service-card">
+        <h3>Video scripts</h3>
+        <p>Reels, YouTube and teleprompter-ready scripts in any tone you need.</p>
+      </div>
+      <div class="service-card">
+        <h3>Content strategy</h3>
+        <p>Reach and engagement plans built on hooks, consistency and research.</p>
+      </div>
+      <div class="service-card">
+        <h3>Captions &amp; ad copy</h3>
+        <p>Multi-platform social copy that keeps a brand's voice consistent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="samples">
+    <h2 class="section-label">Work samples</h2>
+    <div class="samples-grid">
+
+<div class="sample-card orinite">  <p class="sample-label">Featured Project</p>
+  <p class="sample-headline">Orinite HRMS</p>
+
+  <p class="sample-body">
+    <strong>Role:</strong> SEO Content Strategist & Technical Writer<br><br>
+
+    Created SEO-focused landing pages, payroll content, employee engagement pages, and HRMS product content designed to simplify complex software features and improve search visibility.
+  </p>
+
+  <p class="sample-cta">
+    Skills → SEO Strategy • Technical Writing • Product Messaging
+  </p>
+</div>
+
+<div class="sample-card forex">  <p class="sample-label">Featured Project</p>
+  <p class="sample-headline">Forex Brokerage Content</p>
+
+  <p class="sample-body">
+    Developed website content, landing pages, and SEO-focused service pages covering MT5, Forex CRM, Liquidity Solutions, and Brokerage Setup.
+  </p>
+
+  <p class="sample-cta">
+    Skills → SEO • B2B Copywriting • Content Strategy
+  </p>
+</div>
+
+<div class="sample-card capyngen">  <p class="sample-label">Featured Project</p>
+  <p class="sample-headline">Capyngen Website Content</p>
+
+  <p class="sample-body">
+    Owned end-to-end website content development, including content planning, service pages, landing pages, SEO blogs, and brand messaging.
+  </p>
+
+  <p class="sample-cta">
+    Skills → Website Copywriting • SEO • Brand Voice
+  </p>
+</div>
+
+<div class="sample-card reel">        <p class="sample-label">Reel script</p>
+        <p class="sample-headline">"Your content is not growing? Here's the real reason..."</p>
+        <p class="sample-body">Most people post content without a strategy. Growth comes from planning, consistency, and strong hooks.</p>
+        <p class="sample-cta">CTA → Follow for more content tips</p>
+      </div>
+
+<div class="sample-card youtube">        <p class="sample-label">YouTube script</p>
+        <p class="sample-headline">How to write content that converts</p>
+        <p class="sample-body">If your content isn't bringing results, you're missing this key strategy — understand your audience, use strong hooks, focus on value-driven content.</p>
+        <p class="sample-cta">CTA → Subscribe for more content strategies</p>
+      </div>
+
+<div class="sample-card strategy">        <p class="sample-label">Content strategy plan</p>
+        <p class="sample-headline">Goal: increase reach &amp; engagement</p>
+        <p class="sample-body">
+          <ul>
+            <li>3 reels/week — educational + relatable</li>
+            <li>2 carousels — tips &amp; SEO-based</li>
+            <li>1 trending content piece</li>
+            <li>Focus on hooks, storytelling, consistency</li>
+          </ul>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="bonus">
+    <h2 class="section-label">Bonus rounds</h2>
+    <div class="bonus-row">
+      <span class="bonus-pill">Bilingual — Hindi + English</span>
+      <span class="bonus-pill">Interactive teleprompter builds</span>
+      <span class="bonus-pill">HRMS / SaaS product content</span>
+      <span class="bonus-pill">Multi-tone video scripting</span>
+    </div>
+  </section>
+
+  <footer class="contact">
+    <h2>Got a brief? Let's <span class="mark">talk</span>.</h2>
+    <div class="contact-links">
+      <a class="chip filled" href="mailto:pathakvijya2002@gmail.com">pathakvijya2002@gmail.com</a>
+      <a class="chip" href="tel:+918866058890">+91 88660 58890</a>
+    </div>
+    <p class="contact-note">Full samples and drafts: <a href="https://drive.google.com/drive/folders/1AQCZ7DF7ZzsJRgCbz58N7gF9EoOBnnan" target="_blank" rel="noopener" style="color:var(--teal);">Google Drive folder ↗</a></p>
+  </footer>
+
+</div>
+
+<script>
+  const marks = document.querySelectorAll('.mark');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  marks.forEach(m=>io.observe(m));
+</script>
+
+</body>
+</html>
